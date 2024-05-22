@@ -1,0 +1,11 @@
+{"code":401,"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"code":401,"level":"error"}
+{"code":401,"level":"error"}
+{"level":"error","name":"SequelizeDatabaseError","original":{"code":"ER_BAD_FIELD_ERROR","errno":1054,"sql":"SELECT `id`, `name`, `translation`, `transcription`, `description`, `synonimId`, `example`, `type`, `status`, `user_id`, `vocabulary_groub_id`, `createAt` FROM `user` AS `user` WHERE `user`.`user_id` = 1;","sqlMessage":"Unknown column 'translation' in 'field list'","sqlState":"42S22"},"parameters":{},"parent":{"code":"ER_BAD_FIELD_ERROR","errno":1054,"sql":"SELECT `id`, `name`, `translation`, `transcription`, `description`, `synonimId`, `example`, `type`, `status`, `user_id`, `vocabulary_groub_id`, `createAt` FROM `user` AS `user` WHERE `user`.`user_id` = 1;","sqlMessage":"Unknown column 'translation' in 'field list'","sqlState":"42S22"},"sql":"SELECT `id`, `name`, `translation`, `transcription`, `description`, `synonimId`, `example`, `type`, `status`, `user_id`, `vocabulary_groub_id`, `createAt` FROM `user` AS `user` WHERE `user`.`user_id` = 1;"}
+{"level":"error","name":"SequelizeDatabaseError","original":{"code":"ER_BAD_FIELD_ERROR","errno":1054,"sql":"SELECT `id`, `name`, `translation`, `transcription`, `description`, `synonimId`, `example`, `type`, `status`, `user_id`, `vocabulary_groub_id`, `createAt` FROM `user` AS `user` WHERE `user`.`user_id` = 1;","sqlMessage":"Unknown column 'translation' in 'field list'","sqlState":"42S22"},"parameters":{},"parent":{"code":"ER_BAD_FIELD_ERROR","errno":1054,"sql":"SELECT `id`, `name`, `translation`, `transcription`, `description`, `synonimId`, `example`, `type`, `status`, `user_id`, `vocabulary_groub_id`, `createAt` FROM `user` AS `user` WHERE `user`.`user_id` = 1;","sqlMessage":"Unknown column 'translation' in 'field list'","sqlState":"42S22"},"sql":"SELECT `id`, `name`, `translation`, `transcription`, `description`, `synonimId`, `example`, `type`, `status`, `user_id`, `vocabulary_groub_id`, `createAt` FROM `user` AS `user` WHERE `user`.`user_id` = 1;"}
+{"code":401,"level":"error"}
+{"code":401,"level":"error"}
+{"code":401,"level":"error"}
+{"code":401,"level":"error"}
