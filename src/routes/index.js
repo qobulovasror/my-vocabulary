@@ -8,6 +8,8 @@ import { errorHandlerMiddleware } from "../helper/CustomError.js";
 import user from "./user.js";
 import auth from "./auth.js";
 import dictionary from "./dictionary.js";
+import role from "./role.js";
+import track from "./track.js";
 
 export default function (app) {
   //middlewares
@@ -23,8 +25,9 @@ export default function (app) {
   app.use("/api/user", user);
 
   app.use("/api/dictionary", dictionary);
-  // app.use("/api/role", user);
-  // app.use("/api/vocabularyGroub", user);
+  app.use("/api/role", role);
+  app.use("/api/track", track);
+  // app.use("/api/vocabularyGroub", vocabularyGroub);
 
   //use route error handler
   app.use(errorHandlerMiddleware);

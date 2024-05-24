@@ -39,6 +39,7 @@ router.get("/:id", auth, async (req, res) => {
     const dicId = req.params.id;
     if (!dicId) throw new res.error(403, "dictionary's id missed in params");
     const dictionary = await Dictionary.findAll({ where: { id: dicId } });
+    if(!dictionary) throw new res.error(404, "dictionary not found");
     res.json({ dictionary: dictionary });
   } catch (error) {
     next(error);
@@ -58,7 +59,7 @@ router.post("/", auth, async (req, res, next) => {
     const user_id = req.user.id;
     newDictionary = await Dictionary.create({
       name: req.body.name,
-      translation: req.body.email,
+      translation: req.body.translation,
       user_id: user_id,
       vocabulary_groub_id: req.body.vocabulary_groub_id,
       transcription: req.body.transcription,
@@ -88,7 +89,7 @@ router.put("/:id", auth, async (req, res, next) => {
     dictionary = await Dictionary.update(
       {
         name: req.body.name,
-        translation: req.body.email,
+        translation: req.body.translation,
         vocabulary_groub_id: req.body.vocabulary_groub_id,
         transcription: req.body.transcription,
         description: req.body.description,
@@ -102,7 +103,7 @@ router.put("/:id", auth, async (req, res, next) => {
       }
     );
 
-    res.json({ dictionary: dictionary }).status(200);
+    res.json({ ok: true, message: "Successful updated" }).status(200);
   } catch (error) {
     next(error);
   }

@@ -14,6 +14,7 @@ Role.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true
     },
     description: {
       type: DataTypes.TEXT,
@@ -24,6 +25,8 @@ Role.init(
     sequelize,
     modelName: "role",
     tableName: "role",
+    createdAt: false,
+    updatedAt: false
   }
 );
 

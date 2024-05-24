@@ -1,4 +1,4 @@
-import { DataTypes, Model } from "sequelize";
+import { DataTypes, Model, Sequelize } from "sequelize";
 import { sequelize } from "./db.js";
 
 class MemoryTrack extends Model {}
@@ -36,6 +36,9 @@ MemoryTrack.init(
     sequelize,
     modelName: "memorytrack",
     tableName: "memorytrack",
+    createdAt: "create_at",
+    updatedAt: false,
+    updatedAt: false
   }
 );
 
