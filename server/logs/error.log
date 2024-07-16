@@ -33,3 +33,9 @@
 {"code":403,"level":"error"}
 {"fields":["dictionary_id"],"index":"fk_memoryTrack_dictionary1","level":"error","name":"SequelizeForeignKeyConstraintError","original":{"code":"ER_NO_REFERENCED_ROW_2","errno":1452,"parameters":[1,1,10,"2024-05-24 20:53:20"],"sql":"INSERT INTO `memorytrack` (`id`,`status`,`user_id`,`dictionary_id`,`create_at`) VALUES (DEFAULT,?,?,?,?);","sqlMessage":"Cannot add or update a child row: a foreign key constraint fails (`vocabulary`.`memorytrack`, CONSTRAINT `fk_memoryTrack_dictionary1` FOREIGN KEY (`dictionary_id`) REFERENCES `dictionary` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)","sqlState":"23000"},"parameters":[1,1,10,"2024-05-24 20:53:20"],"parent":{"code":"ER_NO_REFERENCED_ROW_2","errno":1452,"parameters":[1,1,10,"2024-05-24 20:53:20"],"sql":"INSERT INTO `memorytrack` (`id`,`status`,`user_id`,`dictionary_id`,`create_at`) VALUES (DEFAULT,?,?,?,?);","sqlMessage":"Cannot add or update a child row: a foreign key constraint fails (`vocabulary`.`memorytrack`, CONSTRAINT `fk_memoryTrack_dictionary1` FOREIGN KEY (`dictionary_id`) REFERENCES `dictionary` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)","sqlState":"23000"},"reltype":"child","sql":"INSERT INTO `memorytrack` (`id`,`status`,`user_id`,`dictionary_id`,`create_at`) VALUES (DEFAULT,?,?,?,?);","table":"dictionary","value":10}
 {"code":403,"level":"error"}
+{"level":"error","name":"SequelizeConnectionRefusedError","original":{"address":"127.0.0.1","code":"ECONNREFUSED","errno":-111,"fatal":true,"port":3307,"syscall":"connect"},"parent":{"address":"127.0.0.1","code":"ECONNREFUSED","errno":-111,"fatal":true,"port":3307,"syscall":"connect"}}
+{"code":401,"level":"error"}
+{"code":401,"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error","view":{"defaultEngine":"ejs","ext":".ejs","name":"index","root":"/home/ubuntu/Desktop/Projects/MERN/my-vocabulary/server/views"}}

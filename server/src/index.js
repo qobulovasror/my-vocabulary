@@ -18,7 +18,7 @@ async function server() {
     await db_connect();
 
     Routes(app);
-    // startBot().then()
+    startBot().then()
 
     app.listen(PORT, () => {
       console.log(`server running on port ${PORT}`);

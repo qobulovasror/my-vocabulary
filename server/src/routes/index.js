@@ -11,8 +11,15 @@ import dictionary from "./dictionary.js";
 import role from "./role.js";
 import track from "./track.js";
 
+//routers for web
+import home from './for_web/home.js';
+import login from './for_web/login.js';
+
+
 export default function (app) {
   //middlewares
+  app.set('view engine', 'ejs');
+  app.use(Express.static("public"))
   app.use(cors());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
@@ -20,7 +27,7 @@ export default function (app) {
   //use custom error handler
   app.use(CustomErrorMiddleware);
 
-  //routes
+  //routes for API
   app.use("/api/auth", auth);
   app.use("/api/user", user);
 
@@ -28,6 +35,16 @@ export default function (app) {
   app.use("/api/role", role);
   app.use("/api/track", track);
   // app.use("/api/vocabularyGroub", vocabularyGroub);
+
+
+  // ROUTES for Web
+  app.use("/", home);
+  app.use("/login", login);
+  // app.use("/register", register);
+  // app.use("/dictionary", dictionary);
+
+
+
 
   //use route error handler
   app.use(errorHandlerMiddleware);
