@@ -1,5 +1,4 @@
 import logger from "../middleware/loggerMiddleware.js";
-// import { Telegraf } from "telegraf";
 import TelegramBot from "node-telegram-bot-api";
 
 export default async function startBot() {
@@ -27,11 +26,11 @@ export default async function startBot() {
     // Kontaktni qabul qilish
     bot.on("contact", (msg) => {
       const chatId = msg.chat.id;
-      const contact = msg.contact;
-
+      // const contact = msg.contact.phone_number;
+      // msg.chat.photo.big_file_id
       bot.sendMessage(
         chatId,
-        `Tizimga browzer orqali kirish uchun kod: <pre>${Math.floor(Math.random() *100000)}</pre>`, {parse_mode: "HTML"}
+        `Tizimga brauzer orqali kirish uchun kod: <pre>${Math.floor(Math.random() * 100000)}</pre>`, {parse_mode: "HTML"}
       );
 
       bot.sendMessage(chatId, '"Open App" tugmasi orqali dasturni telegram orqali ishlatishingiz mumkin', {
@@ -39,15 +38,40 @@ export default async function startBot() {
           inline_keyboard: [
             [
               {
-                text: 'Open Web App',
-                web_app: {url: "https://u6972986287.jprq.app"} 
+                text: 'Open App',
+                web_app: {url: "https://2848-185-213-230-162.ngrok-free.app/"} 
               }
             ]
           ]
-        }
+        },
       });
       
     });
+
+
+    bot.onText(/\/getphoto/, async (msg) => {
+      const chatId = msg.chat.id;
+      const userId = msg.from.id;
+  
+      try {
+          const photos = await bot.getUserProfilePhotos(userId);
+          if (photos.total_count > 0) {
+              // Foydalanuvchining birinchi profil rasmini olish
+              const fileId = photos.photos[0][0].file_id;
+              const file = await bot.getFile(fileId);
+              const fileLink = await bot.getFileLink(fileId);
+              
+              bot.sendMessage(chatId, `Sizning profil rasm manzilingiz: ${fileLink}`);
+          } else {
+              bot.sendMessage(chatId, "Profil rasm topilmadi.");
+          }
+      } catch (error) {
+          console.error(error);
+          bot.sendMessage(chatId, "Profil rasmingizni olishda xatolik yuz berdi.");
+      }
+  });
+
+
   } catch (error) {
     // console.log(error);
     logger.error(error);
