@@ -28,9 +28,13 @@ export default async function startBot() {
       const chatId = msg.chat.id;
       // const contact = msg.contact.phone_number;
       // msg.chat.photo.big_file_id
+
+      
+
+
       bot.sendMessage(
         chatId,
-        `Tizimga brauzer orqali kirish uchun kod: <pre>${Math.floor(Math.random() * 100000)}</pre>`, {parse_mode: "HTML"}
+        `Tizimga brauzer orqali kirish uchun kod: <pre>${Math.floor(Math.random() * 100000)}</pre>`, {parse_mode: "HTML", reply_markup: { remove_keyboard: true }}
       );
 
       bot.sendMessage(chatId, '"Open App" tugmasi orqali dasturni telegram orqali ishlatishingiz mumkin', {
@@ -39,7 +43,7 @@ export default async function startBot() {
             [
               {
                 text: 'Open App',
-                web_app: {url: "https://2848-185-213-230-162.ngrok-free.app/"} 
+                web_app: {url: "https://74cf-213-230-109-74.ngrok-free.app"} 
               }
             ]
           ]
