@@ -13,20 +13,13 @@ MemoryTrack.init(
     },
     status: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "user",
-        key: "id",
-        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
-      },
+      allowNull: true,
+      defaultValue: 1
     },
     dictionary_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "dictionary",
+        model: "custom_vocabulary",
         key: "id",
         deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
       },
@@ -37,8 +30,8 @@ MemoryTrack.init(
     modelName: "memorytrack",
     tableName: "memorytrack",
     createdAt: "create_at",
-    updatedAt: false,
-    updatedAt: false
+    createdAt: true,
+    updatedAt: true
   }
 );
 

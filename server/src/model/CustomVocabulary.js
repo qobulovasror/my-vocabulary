@@ -1,61 +1,51 @@
 import { Sequelize, DataTypes, Model } from "sequelize";
 import { sequelize } from "./db.js";
 
-class User extends Model {}
+class Custom_vocabulary extends Model {}
 
-User.init(
+Custom_vocabulary.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      autoIncrement: false,
+      autoIncrement: true,
       primaryKey: true,
       allowNull: false,
     },
-    chat_id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: false,
+    name: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      unique: true
+    },
+    translation: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    full_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    phone_number: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    profile_img: {
+    description: {
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    token: {
-      type: DataTypes.TEXT,
+    status: {
+      type: DataTypes.STRING,
       allowNull: true,
     },
-    role_id: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "role",
+        model: "user",
         key: "id",
         deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
       },
-      defaultValue: 2,
+      allowNull: false
     },
   },
   {
     sequelize,
-    modelName: "user",
+    modelName: "custom_vocabulary",
     timestamps: true,
-    tableName: "user",
+    tableName: "custom_vocabulary",
     createdAt: "createAt",
     updatedAt: false,
   }
 );
 
-// console.log(User === sequelize.models.User);
-
-export default User;
+export default Custom_vocabulary;

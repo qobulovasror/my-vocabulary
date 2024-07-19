@@ -1,9 +1,9 @@
-import { Sequelize, DataTypes, Model } from "sequelize";
+import { DataTypes, Model, Sequelize } from "sequelize";
 import { sequelize } from "./db.js";
 
-class Dictionary extends Model {}
+class Destination_words extends Model {}
 
-Dictionary.init(
+Destination_words.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,66 +12,55 @@ Dictionary.init(
       allowNull: false,
     },
     name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
-    translation: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
-    transcription: {
-      type: DataTypes.STRING,
-      allowNull: true,
+    translate: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
-    description: {
+    definition: {
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    synonimId: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    example: {
+    other_translate: {
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    type: {
+    synonym: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    status: {
+    antonym: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    user_id: {
+    word_types_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "user",
+        model: "destination_word_types",
         key: "id",
         deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
       },
-      allowNull: false
+      allowNull: false,
     },
-    vocabulary_groub_id: {
+    unit_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "vocabulary_groub",
+        model: "destination_unit",
         key: "id",
         deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
       },
-      defaultValue: 1,
-      allowNull: true
+      allowNull: false,
     },
   },
   {
     sequelize,
-    modelName: "dictionary",
-    timestamps: true,
-    tableName: "dictionary",
-    createdAt: "createAt",
+    modelName: "destination_words",
+    tableName: "destination_words",
+    createdAt: false,
     updatedAt: false,
   }
 );
 
-export default Dictionary;
+export default Destination_words;
