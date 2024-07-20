@@ -1,7 +1,8 @@
 import logger from "../middleware/loggerMiddleware.js";
 import TelegramBot from "node-telegram-bot-api";
-import generateToken from "../helper/token.js";
+import { generateToken } from "../helper/token.js";
 import User from "../model/User.js";
+import updateProfileImg from './helper/updateImg.js'
 
 export default async function startBot() {
   const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
@@ -34,16 +35,6 @@ export default async function startBot() {
       const chatId = msg.chat.id;
       const userId = msg.from.id;
 
-      // bot.sendMessage(
-      //   chatId,
-      //   `Tizimga brauzer orqali kirish uchun kod: <pre>${Math.floor(Math.random() * 100000)}</pre>`, {parse_mode: "HTML", reply_markup: { remove_keyboard: true }}
-      // );
-
-      //get user's first, last, phone_number, img,
-      // check user from db
-      // if not in db add and give token
-      // else  auth and update token
-
       let user = await User.findOne({ where: { id: userId } });
       let token = generateToken({
         id: userId,
@@ -51,26 +42,21 @@ export default async function startBot() {
       });
 
       if (user) {
-        user = await User.update({ token: token }, { where: { id: userId }});
+        token = user.dataValues.token;
       } else {
-        //get user prifile img
-        const photos = await bot.getUserProfilePhotos(userId);
-        let fileLink = null;
-        if (photos.total_count > 0) {
-          fileLink = await bot.getFileLink(photos.photos[0][0].file_id);
-        }
-
         user = await User.create({
           id: userId,
           chat_id: chatId,
           phone_number: msg.contact.phone_number,
           username: msg.chat?.username || null,
-          profil_img: fileLink,
-          full_name: msg.chat?.first_name + msg.chat?.last_name || null,
+          profil_img: null,
+          full_name: (msg.chat?.first_name)? msg.chat?.first_name : "" + (msg.chat?.last_name)? msg.chat?.last_name: "",
           role_id: 1,
           token: token,
         });
-      }
+      }  
+
+      await updateProfileImg(msg, bot)
 
       bot.sendMessage(
         chatId,
@@ -81,7 +67,7 @@ export default async function startBot() {
               [
                 {
                   text: "Open App",
-                  web_app: { url: process.env.PROJECT_URL+"/bot" },
+                  web_app: { url: process.env.PROJECT_URL+"/bot/auth/"+token },
                 },
               ],
             ],
@@ -91,8 +77,8 @@ export default async function startBot() {
     });
 
     bot.onText(/\/getphoto/, async (msg) => {
-      const userId = userId;
-
+      const userId = msg.from.id;
+      const chatId = msg.chat.id;
       try {
         const photos = await bot.getUserProfilePhotos(userId);
         if (photos.total_count > 0) {

@@ -13,11 +13,12 @@ import { errorHandlerMiddleware } from "../helper/CustomError.js";
 // import track from "./track.js";
 
 //routers for telegram bot app
-import home from './for_telegram/home.js';
+import bot_home from './for_telegram/home.js';
+import bot_auth from './for_telegram/auth.js';
 // import login from './for_web/login.js';
 
 //routers for web
-// import home from './for_web/home.js';
+import home from './for_web/home.js';
 // import login from './for_web/login.js';
 
 export default function (app) {
@@ -26,7 +27,6 @@ export default function (app) {
       secret: "randomstringsessionsecret",
       resave: true,
       saveUninitialized: true,
-      cookie: { secure: true }
     })
   );
 
@@ -49,10 +49,11 @@ export default function (app) {
   // app.use("/api/track", track);
 
   // ======== ROUTES FOR TELEGRAM WEB ========
-  app.use("/bot", home);
+  app.use("/bot/auth", bot_auth);
+  app.use("/bot", bot_home);
 
   // ======== ROUTES for Web ========
-  // app.use("/", home);
+  app.use("/", home);
   // app.use("/login", login);
   // app.use("/register", register);
   // app.use("/dictionary", dictionary);

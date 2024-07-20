@@ -1,8 +1,15 @@
 import jwt from "jsonwebtoken";
 
-function generateToke(data){
+function generateToken(data){
     // return jwt.sign(data, process.env.JWT_SECRET_TOKEN_KEY, { expiresIn: '1d' });
     return jwt.sign(data, process.env.JWT_SECRET_TOKEN_KEY);
 }
 
-export default generateToke;
+function parseJwt (token) {
+    return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+}
+
+export {
+    generateToken,
+    parseJwt
+};

@@ -3,7 +3,7 @@ import logger from "./loggerMiddleware.js";
 
 async function auth(req, res, next) {
   try {
-    if (req.session.email == null || req.session.email.length == 0) {
+    if (req.session.token == null || req.session.token.length == 0) {
       res.redirect("/");
     } else {
       next();
