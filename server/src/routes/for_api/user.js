@@ -1,10 +1,10 @@
 import { Router } from "express";
 import bcrypt from 'bcrypt';
-import generateToken from '../helper/token.js';
-import {addUserValidator, updateUserValidator} from '../validators/userValidator.js';
-import User from '../model/User.js';
-import auth from '../middleware/authMiddleware.js';
-import role from '../middleware/roleMiddleware.js';
+import generateToken from '../../helper/token.js';
+import {addUserValidator, updateUserValidator} from '../../validators/userValidator.js';
+import User from '../../model/User.js';
+import auth from '../../middleware/authMiddleware.js';
+import role from '../../middleware/roleMiddleware.js';
 
 const router = Router();
 

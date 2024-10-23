@@ -9,7 +9,6 @@ async function updateProfileImg(msg, bot) {
       const fileId = photos.photos[0][0].file_id;
       const file = await bot.getFile(fileId);
       const fileLink = `https://api.telegram.org/file/bot${bot.token}/${file.file_path}`;
-      console.log(fileLink);
       const user = await User.update(
         { profile_img: fileLink },
         { where: { id: userId } }

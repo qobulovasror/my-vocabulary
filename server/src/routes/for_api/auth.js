@@ -1,8 +1,8 @@
 import { Router } from "express";
 import bcrypt from 'bcrypt';
-import User from "../model/User.js";
-import { authUserValidator } from "../validators/userValidator.js";
-import generateToken from '../helper/token.js';
+import User from "../../../model/User.js";
+import { authUserValidator } from "../../../validators/userValidator.js";
+import generateToken from '../../../helper/token.js';
 const router = Router()
 
 router.post('/', async (req, res, next)=>{

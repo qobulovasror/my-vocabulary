@@ -29,9 +29,8 @@ MemoryTrack.init(
     sequelize,
     modelName: "memorytrack",
     tableName: "memorytrack",
-    createdAt: "create_at",
-    createdAt: true,
-    updatedAt: true
+    createdAt: "createAt",
+    updatedAt: false
   }
 );
 

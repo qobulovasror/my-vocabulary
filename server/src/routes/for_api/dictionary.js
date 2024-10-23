@@ -3,9 +3,9 @@ import Dictionary from "../model/Dictionary.js";
 import {
   addDictionaryValidator,
   updateDictionaryValidator,
-} from "../validators/dictionaryValidator.js";
-import auth from "../middleware/authMiddleware.js";
-import role from "../middleware/roleMiddleware.js";
+} from "../../validators/dictionaryValidator.js";
+import auth from "../../middleware/authMiddleware.js";
+import role from "../../middleware/roleMiddleware.js";
 
 const router = Router();
 

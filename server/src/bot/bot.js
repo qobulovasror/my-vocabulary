@@ -76,31 +76,7 @@ export default async function startBot() {
       );
     });
 
-    bot.onText(/\/getphoto/, async (msg) => {
-      const userId = msg.from.id;
-      const chatId = msg.chat.id;
-      try {
-        const photos = await bot.getUserProfilePhotos(userId);
-        if (photos.total_count > 0) {
-          // Foydalanuvchining birinchi profil rasmini olish
-          const fileId = photos.photos[0][0].file_id;
-          const fileLink = await bot.getFileLink(fileId);
-
-          bot.sendMessage(
-            chatId,
-            `Sizning profil rasm manzilingiz: ${fileLink}`
-          );
-        } else {
-          bot.sendMessage(chatId, "Profil rasm topilmadi.");
-        }
-      } catch (error) {
-        console.error(error);
-        bot.sendMessage(
-          chatId,
-          "Profil rasmingizni olishda xatolik yuz berdi."
-        );
-      }
-    });
+    
   } catch (error) {
     // console.log(error);
     logger.error(error);

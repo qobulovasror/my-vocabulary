@@ -15,6 +15,8 @@ import { errorHandlerMiddleware } from "../helper/CustomError.js";
 //routers for telegram bot app
 import bot_home from './for_telegram/home.js';
 import bot_auth from './for_telegram/auth.js';
+import bot_addWords from './for_telegram/addWords.js';
+import bot_allWords from './for_telegram/allWords.js';
 // import login from './for_web/login.js';
 
 //routers for web
@@ -49,8 +51,10 @@ export default function (app) {
   // app.use("/api/track", track);
 
   // ======== ROUTES FOR TELEGRAM WEB ========
-  app.use("/bot/auth", bot_auth);
   app.use("/bot", bot_home);
+  app.use("/bot/auth", bot_auth);
+  app.use("/bot/addWord", bot_addWords);
+  app.use("/bot/allWords", bot_allWords);
 
   // ======== ROUTES for Web ========
   app.use("/", home);

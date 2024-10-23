@@ -32,11 +32,11 @@
                     <p style="margin: -5px 0 2px 0; font-style: italic;"> <%= phone_number %> </p>
                     <div class="row">
                         <div class="col text-center">
-                            <span class="badge text-bg-primary" style="font-size: 17px;">1200</span>
+                            <span class="badge text-bg-primary" style="font-size: 17px;"><%=allWord%></span>
                             <p class="statistic">Jami so'zlar</p>
                         </div>
                         <div class="col text-center">
-                            <span class="badge text-bg-primary" style="font-size: 17px;">200</span>
+                            <span class="badge text-bg-primary" style="font-size: 17px;"><%=memoriedWords%></span>
                             <p class="statistic">Yodlanganlar</p>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                 </a>
             </div>
             <div class="col">
-                <a class="card p-2 rounded">
+                <a class="card p-2 rounded" href="/bot/addWord">
                     <i class="bi bi-patch-plus"></i>
                     Yangi so'zlar kiritish
                 </a>
@@ -61,7 +61,7 @@
         </div>
         <div class="row mb-2">
             <div class="col">
-                <a class="card p-2 rounded">
+                <a class="card p-2 rounded" href="/bot/allWords">
                     <i class="bi bi-list-check"></i>
                     Barcha so'zlar ro'yxati
                 </a>
